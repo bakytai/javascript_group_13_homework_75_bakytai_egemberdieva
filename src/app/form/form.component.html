@@ -1,0 +1,50 @@
+<div>
+<mat-card>
+  <mat-card-content>
+    <form #f="ngForm" fxLayout="column">
+      <mat-form-field appearance="outline">
+        <mat-label>Decode message</mat-label>
+        <textarea
+          #decode
+          ngModel
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+        ></textarea>
+      </mat-form-field>
+      <div fxLayout="row" fxLayoutAlign="center"  fxLayoutGap="10px">
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input name="password" required matInput ngModel/>
+        </mat-form-field>
+        <div  fxLayoutGap="10px">
+          <button mat-raised-button color="primary" [disabled]="f.invalid" (click)="encodeMessage()">
+            <mat-icon>
+              <span class="material-icons">
+                south
+              </span>
+            </mat-icon>
+          </button>
+          <button mat-raised-button color="primary" [disabled]="f.invalid" (click)="decodeMessage()">
+            <mat-icon>
+              <span class="material-icons">
+                north
+              </span>
+            </mat-icon>
+          </button>
+        </div>
+      </div>
+      <mat-form-field appearance="outline">
+        <mat-label>Encode message</mat-label>
+        <textarea
+          #encode
+          ngModel
+          matInput
+          cdkTextareaAutosize
+          cdkAutosizeMinRows="3"
+        ></textarea>
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+</mat-card>
+</div>
