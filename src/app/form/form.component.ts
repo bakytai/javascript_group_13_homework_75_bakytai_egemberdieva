@@ -9,30 +9,29 @@ import { Message } from '../model/message.model';
   styleUrls: ['./form.component.sass']
 })
 export class FormComponent implements OnInit {
-  @ViewChild('f') form!: NgForm;
-  @ViewChild('decode') decode!: ElementRef;
-  @ViewChild('encode') encode!: ElementRef;
-  @ViewChild('password') password!: ElementRef;
+   decode!: string;
+   encode!: string;
+   password!: string;
 
   constructor(private messageService: MessagesService) { }
 
   ngOnInit(): void {}
 
   encodeMessage() {
-    const passwordWord = this.password.nativeElement.value;
-    const word = this.decode.nativeElement.value;
+    const passwordWord = this.password;
+    const word = this.decode;
     const message = new Message(passwordWord, word);
-    this.messageService.encodeWords(message).subscribe(response => {
-      // this.encode = response.message;
+    this.messageService.encodeWords(message).subscribe((response:{[key: string]: string}) => {
+      console.log(response.encodeWord);
     })
   }
 
   decodeMessage() {
-    const passwordWord = this.password.nativeElement.value;
-    const word = this.encode.nativeElement.value;
+    const passwordWord = this.password;
+    const word = this.encode;
     const message = new Message(passwordWord, word);
-    this.messageService.decodeWords(message).subscribe(response => {
-      // this.encode = response.message;
+    this.messageService.decodeWords(message).subscribe((response:{[key: string]: string}) => {
+     console.log(response.decodeWord);
     })
   }
 }

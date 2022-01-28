@@ -1,12 +1,11 @@
 <div>
 <mat-card>
   <mat-card-content>
-    <form #f="ngForm" fxLayout="column">
+    <form fxLayout="column">
       <mat-form-field appearance="outline">
         <mat-label>Decode message</mat-label>
         <textarea
-          #decode
-          ngModel
+          [(ngModel)]="decode"
           matInput
           cdkTextareaAutosize
           cdkAutosizeMinRows="3"
@@ -15,17 +14,17 @@
       <div fxLayout="row" fxLayoutAlign="center"  fxLayoutGap="10px">
         <mat-form-field appearance="outline">
           <mat-label>Password</mat-label>
-          <input name="password" required matInput ngModel/>
+          <input name="password" [(ngModel)]="password" matInput />
         </mat-form-field>
         <div  fxLayoutGap="10px">
-          <button mat-raised-button color="primary" [disabled]="f.invalid" (click)="encodeMessage()">
+          <button mat-raised-button color="primary" (click)="encodeMessage()">
             <mat-icon>
               <span class="material-icons">
                 south
               </span>
             </mat-icon>
           </button>
-          <button mat-raised-button color="primary" [disabled]="f.invalid" (click)="decodeMessage()">
+          <button mat-raised-button color="primary" (click)="decodeMessage()">
             <mat-icon>
               <span class="material-icons">
                 north
@@ -37,8 +36,7 @@
       <mat-form-field appearance="outline">
         <mat-label>Encode message</mat-label>
         <textarea
-          #encode
-          ngModel
+          [(ngModel)]="encode"
           matInput
           cdkTextareaAutosize
           cdkAutosizeMinRows="3"

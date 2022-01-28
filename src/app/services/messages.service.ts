@@ -10,10 +10,18 @@ export class MessagesService {
   constructor(private http:HttpClient) {}
 
   decodeWords(message: Message) {
-    return this.http.post('http://localhost:8000/messages/decode', message);
+    const body = {
+      word: message.word,
+      password: message.password
+    }
+    return this.http.post<{[key: string]: string}>('http://localhost:8000/messages/decode', body);
   }
 
   encodeWords(message: Message) {
-    return this.http.post('http://localhost:8000/messages/encode', message);
+    const body = {
+      word: message.word,
+      password: message.password
+    }
+    return this.http.post<{[key: string]: string}>('http://localhost:8000/messages/encode', body);
   }
 }
